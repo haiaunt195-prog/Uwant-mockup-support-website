@@ -6,7 +6,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>INNO ƯU ĐÃI NỘI BỘ</title>
+<title>INNOYO KHÁCH HÀNG THÂN THIẾT 2026</title>
 
 <style>
 
@@ -246,11 +246,11 @@ h2{ font-size:24px; }
 
 <div class="header">
 <img
-  src="https://raw.githubusercontent.com/haiaunt195-prog/INNO-order/main/logo-inno-black.png"
+  src="https://raw.githubusercontent.com/haiaunt195-prog/INNOYO-khach-hang-than-thien-2026/main/Logo%20INNO%20-%20Black.png"
   class="logo"
   alt="INNO Logo"
 />
-<h1>INNO ƯU ĐÃI NỘI BỘ</h1>
+<h1>INNOYO KHÁCH HÀNG THÂN THIẾT 2026</h1>
 </div>
 
 <label>Họ và tên <span class="required">*</span></label>
@@ -261,8 +261,8 @@ h2{ font-size:24px; }
 <option value="">-- Chọn công ty --</option>
 <option value="OPPO_Công ty Cổ Phần Kỹ Thuật & Khoa Học Vĩnh Khang">OPPO – Công ty Cổ Phần Kỹ Thuật & Khoa Học Vĩnh Khang</option>
 <option value="DJI_Công Ty TNHH Kỹ Thuật Tầm Nhìn Toàn Cầu">DJI – Công Ty TNHH Kỹ Thuật Tầm Nhìn Toàn Cầu</option>
-<option value="[HCM] O-TECH_Công Ty TNHH Thiết Bị Thông Minh O-TECH HCM">[HCM] O-TECH_Công Ty TNHH Thiết Bị Thông Minh O-TECH HCM</option>
-<option value="[HN] O-TECH_Công Ty TNHH Thiết Bị Thông Minh O-TECH Hà Nội">[HN] O-TECH_Công Ty TNHH Thiết Bị Thông Minh O-TECH Hà Nội</option>
+<option value="[HCM] O-TECH_Công Ty TNHH Thiết Bị Thông Minh O-TECH HCM">[HCM] O-TECH – Công Ty TNHH Thiết Bị Thông Minh O-TECH HCM</option>
+<option value="[HN] O-TECH_Công Ty TNHH Thiết Bị Thông Minh O-TECH Hà Nội">[HN] O-TECH – Công Ty TNHH Thiết Bị Thông Minh O-TECH Hà Nội</option>
 <option value="EV Power_Công Ty TNHH EV Power">EV Power – Công Ty TNHH EV Power</option>
 <option value="NAM VIỆT_Công ty Cổ Phần Nam Việt Land">NAM VIỆT – Công ty Cổ Phần Nam Việt Land</option>
 <option value="Service">Service</option>
@@ -304,7 +304,7 @@ Tổng tiền: <span id="total">0</span> VNĐ
   và upload bill chuyển khoản bên dưới.
 </p>
 <img
-  src="https://raw.githubusercontent.com/haiaunt195-prog/INNO-order/main/QR%20code-inno%20noi%20bo.png"
+  src="https://raw.githubusercontent.com/haiaunt195-prog/INNOYO-khach-hang-than-thien-2026/main/QR%20code-inno%20noi%20bo.png"
   class="qr-image"
 />
 </div>
@@ -317,21 +317,7 @@ Tổng tiền: <span id="total">0</span> VNĐ
 </div>
 
 <script>
-// Kiểm tra hạn đăng ký
-const deadline = new Date("2026-05-31T23:59:59+07:00");
-if (new Date() > deadline) {
-  document.querySelector(".container").innerHTML = `
-    <div style="text-align:center;padding:60px 20px;">
-      <img src="https://raw.githubusercontent.com/haiaunt195-prog/INNO-order/main/logo-inno-black.png" style="width:160px;margin-bottom:32px;"/>
-      <div style="font-size:64px;margin-bottom:16px;">🔒</div>
-      <h2 style="font-size:28px;font-weight:700;margin-bottom:12px;">Chương trình đã kết thúc</h2>
-      <p style="font-size:16px;color:#666;line-height:1.7;">
-        Ưu đãi nội bộ đã kết thúc vào 23:59:59 ngày 31/05/2026.<br/>
-        Cảm ơn bạn đã quan tâm!
-      </p>
-    </div>
-  `;
-}
+
 const ADDRESS_MAP = {
   "OPPO_Công ty Cổ Phần Kỹ Thuật & Khoa Học Vĩnh Khang": "Tầng 16, tòa nhà UOA, 6 Tân Trào, P. Tân Mỹ, HCM",
   "DJI_Công Ty TNHH Kỹ Thuật Tầm Nhìn Toàn Cầu": "Tầng 5, tòa nhà UOA, 6 Tân Trào, P. Tân Mỹ",
@@ -358,7 +344,7 @@ function updateAddress() {
 
 const CLOUDINARY_CLOUD_NAME = "ddpsybbri";
 const CLOUDINARY_UPLOAD_PRESET = "inno_upload";
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz0HeVbyzDNWWMI4FnbjV--LSq3G-KqH6Og02gqzHS6cXSCqy2oHlr4458qsdElr4M0mg/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwRJfbMdbj6IPyTWcd7inPplD-_77nVGsTPM8Url5cyGXpLcKWqutssT84I6hTo9omM/exec";
 
 const products = [
   { code:"INNO-B001", name:"Quạt InnoFans Handheld", price:200000, colors:["Bạc","Đen","Vàng"] },
@@ -384,11 +370,11 @@ products.forEach((p, index) => {
   checkbox.className = "product-checkbox";
   checkbox.id = `card-${index}`;
   checkbox.onclick = (e) => {
-  if (e.target.type === "checkbox") return;
-  const cb = document.getElementById(`check-${index}`);
-  cb.checked = !cb.checked;
-  toggleProduct(index);
-};
+    if (e.target.type === "checkbox") return;
+    const cb = document.getElementById(`check-${index}`);
+    cb.checked = !cb.checked;
+    toggleProduct(index);
+  };
   checkbox.innerHTML = `
     <div style="display:flex;align-items:center;gap:14px;width:100%;">
       <input type="checkbox" id="check-${index}" onchange="toggleProduct(${index})"/>
@@ -565,5 +551,3 @@ async function submitOrder() {
 
 </body>
 </html>
-
-
