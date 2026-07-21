@@ -27,7 +27,6 @@
     line-height: 1.6;
   }
 
-  /* ============ DEV NOTE BAR ============ */
   .dev-notes-toggle {
     position: sticky;
     top: 0;
@@ -59,7 +58,7 @@
     font-size: 11px;
     padding: 8px 12px;
     border-radius: 6px;
-    max-width: 220px;
+    max-width: 230px;
     z-index: 500;
     line-height: 1.5;
     box-shadow: 0 4px 16px rgba(0,0,0,0.25);
@@ -77,29 +76,27 @@
 
   .anchor { position: relative; display: inline-block; width: 100%; }
 
-  /* ============ LAYOUT ============ */
   .app-container {
     max-width: 480px;
     margin: 0 auto;
     min-height: 100vh;
     background: var(--white);
     position: relative;
-  }
-
-  .screen {
-    display: none;
     padding: 20px;
-    animation: fadeIn 0.2s ease;
   }
 
-  .screen.active { display: block; }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(4px); }
-    to { opacity: 1; transform: translateY(0); }
+  .state-tag {
+    display: inline-block;
+    background: var(--charcoal);
+    color: var(--gold);
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
   }
 
-  /* ============ HOME SCREEN ============ */
   .hero {
     width: 100%;
     height: 200px;
@@ -150,6 +147,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
+    margin-bottom: 4px;
   }
 
   .product-card {
@@ -167,8 +165,10 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.06);
   }
 
-  .product-card:active {
-    transform: translateY(0);
+  .product-card.selected {
+    border-color: var(--gold);
+    border-width: 2px;
+    background: var(--sand);
   }
 
   .product-card-image {
@@ -177,6 +177,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .product-card.selected .product-card-image {
+    background: var(--white);
   }
 
   .product-card-image .placeholder-box {
@@ -202,22 +206,21 @@
     margin-top: 2px;
   }
 
-  /* ============ PRODUCT SCREEN ============ */
-  .back-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: none;
-    border: 1px solid var(--platinum);
-    border-radius: var(--radius-sm);
-    padding: 8px 14px;
-    font-size: 12px;
-    cursor: pointer;
-    color: var(--charcoal);
-    margin-bottom: 20px;
+  .content-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
   }
 
-  .back-btn:hover { border-color: var(--gold); }
+  .content-panel.open {
+    max-height: 5000px;
+    margin-top: 24px;
+  }
+
+  .panel-inner {
+    border-top: 1px solid var(--platinum);
+    padding-top: 20px;
+  }
 
   .product-header {
     display: flex;
@@ -226,12 +229,12 @@
     padding: 16px;
     background: var(--sand);
     border-radius: var(--radius-lg);
-    margin-bottom: 24px;
+    margin-bottom: 22px;
   }
 
   .product-header-thumb {
-    width: 56px;
-    height: 56px;
+    width: 48px;
+    height: 48px;
     border-radius: var(--radius-sm);
     background: var(--white);
     border: 1px solid var(--platinum);
@@ -239,14 +242,14 @@
   }
 
   .product-header h2 {
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 600;
   }
 
   .product-header .sub {
     font-size: 11px;
     color: var(--text-muted);
-    margin-top: 3px;
+    margin-top: 2px;
   }
 
   .subsection-label {
@@ -256,16 +259,13 @@
     letter-spacing: 0.8px;
     font-weight: 600;
     margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
   }
 
   .video-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 8px;
-    margin-bottom: 26px;
+    margin-bottom: 24px;
   }
 
   .video-card {
@@ -309,7 +309,7 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin-bottom: 26px;
+    margin-bottom: 24px;
   }
 
   .manual-item {
@@ -326,17 +326,12 @@
 
   .manual-item:hover { border-color: var(--gold); background: #fffdf7; }
 
-  .manual-item .label {
-    font-size: 13px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+  .manual-item .label { font-size: 13px; }
 
   .manual-item .meta {
     font-size: 10px;
     color: var(--text-muted);
-    margin-left: 22px;
+    margin-top: 2px;
   }
 
   .download-icon {
@@ -372,9 +367,7 @@
     font-size: 12px;
   }
 
-  .faq-item.open .faq-chevron {
-    transform: rotate(180deg);
-  }
+  .faq-item.open .faq-chevron { transform: rotate(180deg); }
 
   .faq-answer {
     max-height: 0;
@@ -391,24 +384,55 @@
     border-top: 1px solid var(--sand);
   }
 
-  .icon-circle {
-    width: 14px; height: 14px;
-    display: inline-flex; align-items: center; justify-content: center;
-    color: var(--gold);
+  /* ===== Divider between product-specific and general FAQ ===== */
+  .faq-divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 26px 0 16px;
   }
 
-  /* ============ STATE TAG ============ */
-  .state-tag {
-    display: inline-block;
-    background: var(--charcoal);
-    color: var(--gold);
-    font-size: 10px;
-    padding: 3px 10px;
-    border-radius: 20px;
-    margin-bottom: 12px;
-    font-weight: 600;
-    letter-spacing: 0.3px;
+  .faq-divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--platinum);
   }
+
+  .faq-divider-text {
+    font-size: 10px;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  /* ===== General FAQ section (fixed, applies to all products) ===== */
+  .general-faq-section {
+    background: var(--sand);
+    border-radius: var(--radius-lg);
+    padding: 16px;
+  }
+
+  .general-faq-section .subsection-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .general-faq-badge {
+    background: var(--charcoal);
+    color: var(--white);
+    font-size: 9px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 600;
+  }
+
+  .general-faq-section .faq-item {
+    background: var(--white);
+  }
+
+  .general-faq-section .faq-list { margin-bottom: 0; }
 </style>
 </head>
 <body>
@@ -420,164 +444,221 @@
 
 <div class="app-container">
 
-  <!-- ============ SCREEN 1: HOME ============ -->
-  <div class="screen active" id="screen-home">
-    <div class="state-tag">SCREEN: Home / Support Landing</div>
+  <div class="state-tag">SCREEN: Home — single page, inline expand, 2-layer FAQ</div>
 
-    <div class="anchor">
-      <div class="hero">
-        <div class="hero-decoration" style="width:64px;height:64px;top:20px;right:30px;opacity:0.15;"></div>
-        <div class="hero-decoration" style="width:36px;height:36px;bottom:16px;left:36px;opacity:0.1;"></div>
-        <p class="eyebrow">UWANT Vietnam</p>
-        <h1>Trung tâm hỗ trợ</h1>
-        <p>Video · Tài liệu · Câu hỏi thường gặp</p>
-      </div>
-      <div class="dev-note" style="top:10px;left:10px;">
-        Hero: full-width banner image (or gradient fallback). Recommend 1200×400px source, lazy-loaded. Text overlay stays fixed regardless of image.
-      </div>
+  <div class="anchor">
+    <div class="hero">
+      <div class="hero-decoration" style="width:64px;height:64px;top:20px;right:30px;opacity:0.15;"></div>
+      <div class="hero-decoration" style="width:36px;height:36px;bottom:16px;left:36px;opacity:0.1;"></div>
+      <p class="eyebrow">UWANT Vietnam</p>
+      <h1>Trung tâm hỗ trợ</h1>
+      <p>Video · Tài liệu · Câu hỏi thường gặp</p>
     </div>
-
-    <p class="section-label">Chọn sản phẩm của bạn</p>
-
-    <div class="anchor">
-      <div class="product-grid">
-        <div class="product-card" onclick="goToProduct('D600')">
-          <div class="product-card-image"><div class="placeholder-box"></div></div>
-          <div class="product-card-info">
-            <div class="name">D600</div>
-            <div class="desc">Robot hút bụi</div>
-          </div>
-        </div>
-        <div class="product-card" onclick="goToProduct('DX800 Steam')">
-          <div class="product-card-image"><div class="placeholder-box"></div></div>
-          <div class="product-card-info">
-            <div class="name">DX800 Steam</div>
-            <div class="desc">Hút nước nóng</div>
-          </div>
-        </div>
-        <div class="product-card" onclick="goToProduct('Y100 Steam')">
-          <div class="product-card-image"><div class="placeholder-box"></div></div>
-          <div class="product-card-info">
-            <div class="name">Y100 Steam</div>
-            <div class="desc">Lau sàn hơi nước</div>
-          </div>
-        </div>
-      </div>
-      <div class="dev-note" style="top:0;right:-10px;">
-        Product card: click → navigate to /{productId}. Real product photo replaces placeholder box. Hover = border turns gold + card lifts 2px. Data: name, short desc, thumbnail from products table.
-      </div>
+    <div class="dev-note" style="top:10px;left:10px;">
+      Hero: full-width banner image or gradient fallback. Static, no interaction.
     </div>
   </div>
 
-  <!-- ============ SCREEN 2: PRODUCT DETAIL ============ -->
-  <div class="screen" id="screen-product">
-    <div class="state-tag">SCREEN: Product detail (/:productId)</div>
+  <p class="section-label">Chọn sản phẩm của bạn</p>
 
-    <button class="back-btn" onclick="goToHome()">← Quay lại</button>
-
-    <div class="anchor">
-      <div class="product-header">
-        <div class="product-header-thumb"></div>
-        <div>
-          <h2 id="product-name">D600</h2>
-          <p class="sub">Tất cả tài liệu hỗ trợ</p>
+  <div class="anchor">
+    <div class="product-grid">
+      <div class="product-card" id="card-S600" onclick="selectProduct('S600')">
+        <div class="product-card-image"><div class="placeholder-box"></div></div>
+        <div class="product-card-info">
+          <div class="name">S600</div>
+          <div class="desc">Robot hút bụi</div>
         </div>
       </div>
-      <div class="dev-note" style="top:-10px;left:60px;">
-        Header pulls product data by ID from URL param. Same component reused for all 3 products — only content differs.
+      <div class="product-card" id="card-DX800" onclick="selectProduct('DX800')">
+        <div class="product-card-image"><div class="placeholder-box"></div></div>
+        <div class="product-card-info">
+          <div class="name">DX800</div>
+          <div class="desc">Hút nước nóng</div>
+        </div>
+      </div>
+      <div class="product-card" id="card-Y100" onclick="selectProduct('Y100')">
+        <div class="product-card-image"><div class="placeholder-box"></div></div>
+        <div class="product-card-info">
+          <div class="name">Y100</div>
+          <div class="desc">Lau sàn hơi nước</div>
+        </div>
       </div>
     </div>
-
-    <div class="anchor">
-      <p class="subsection-label">▶ Video hướng dẫn</p>
-      <div class="video-grid">
-        <div class="video-card" onclick="alert('Opens video player / modal / YouTube embed')">
-          <div class="video-thumb">▶<span class="video-duration">3:24</span></div>
-          <div class="video-title">Lắp ráp</div>
-        </div>
-        <div class="video-card" onclick="alert('Opens video player / modal / YouTube embed')">
-          <div class="video-thumb">▶<span class="video-duration">4:15</span></div>
-          <div class="video-title">Chế độ thông minh</div>
-        </div>
-        <div class="video-card" onclick="alert('Opens video player / modal / YouTube embed')">
-          <div class="video-thumb">▶<span class="video-duration">2:45</span></div>
-          <div class="video-title">Bảo trì</div>
-        </div>
-      </div>
-      <div class="dev-note" style="top:-4px;right:0;">
-        Click video card → opens modal player OR navigates to /:productId/videos/:videoId. Embed via YouTube iframe or self-hosted mp4. Duration badge from video metadata.
-      </div>
+    <div class="dev-note" style="top:0;right:-10px;">
+      Click card → no navigation. Expands panel below with that product's content. Switching product swaps video/manual/product-FAQ content — but the General FAQ block at the bottom stays the same regardless of product selected (same 6-7 items, same data source, not filtered by product_id).
     </div>
+  </div>
 
-    <div class="anchor">
-      <p class="subsection-label">⬇ Manual tải về</p>
-      <div class="manual-list">
-        <div class="manual-item" onclick="alert('Triggers file download: D600_Manual_VI.pdf')">
+  <div class="content-panel" id="content-panel">
+    <div class="panel-inner">
+
+      <div class="anchor">
+        <div class="product-header">
+          <div class="product-header-thumb"></div>
           <div>
-            <div class="label">📄 Hướng dẫn sử dụng (VI)</div>
-            <div class="meta">PDF · 2.3 MB · 25 trang</div>
+            <h2 id="product-name">S600</h2>
+            <p class="sub">Tất cả tài liệu hỗ trợ</p>
           </div>
-          <span class="download-icon">⬇</span>
-        </div>
-        <div class="manual-item" onclick="alert('Triggers file download: D600_Specs.pdf')">
-          <div>
-            <div class="label">📄 Thông số kỹ thuật</div>
-            <div class="meta">PDF · 890 KB · 4 trang</div>
-          </div>
-          <span class="download-icon">⬇</span>
         </div>
       </div>
-      <div class="dev-note" style="top:-4px;right:0;">
-        Click row → direct file download (not new tab). Show browser's native download progress. File hosted on Cloudinary/S3, URL from manuals table.
-      </div>
-    </div>
 
-    <div class="anchor">
-      <p class="subsection-label">❓ Câu hỏi thường gặp</p>
-      <div class="faq-list">
-        <div class="faq-item" onclick="toggleFaq(this)">
-          <div class="faq-question">
-            <span>Tại sao máy không hút nước?</span>
-            <span class="faq-chevron">▾</span>
+      <div class="anchor">
+        <p class="subsection-label">▶ Video hướng dẫn</p>
+        <div class="video-grid">
+          <div class="video-card" onclick="alert('Opens video player / modal')">
+            <div class="video-thumb">▶<span class="video-duration">3:24</span></div>
+            <div class="video-title">Lắp ráp</div>
           </div>
-          <div class="faq-answer">Kiểm tra bể nước, bơm và ống dẫn. Vệ sinh theo hướng dẫn bảo trì. Nếu vẫn không hoạt động, liên hệ bộ phận bảo hành.</div>
-        </div>
-        <div class="faq-item" onclick="toggleFaq(this)">
-          <div class="faq-question">
-            <span>Cách vệ sinh chổi quét?</span>
-            <span class="faq-chevron">▾</span>
+          <div class="video-card" onclick="alert('Opens video player / modal')">
+            <div class="video-thumb">▶<span class="video-duration">4:15</span></div>
+            <div class="video-title">Chế độ thông minh</div>
           </div>
-          <div class="faq-answer">Tháo chổi ra khỏi máy, loại bỏ tóc và bụi bám bằng tay hoặc kéo nhỏ, lắp lại đúng chiều mũi tên.</div>
-        </div>
-        <div class="faq-item" onclick="toggleFaq(this)">
-          <div class="faq-question">
-            <span>Tiếng ồn bất thường khi vận hành?</span>
-            <span class="faq-chevron">▾</span>
+          <div class="video-card" onclick="alert('Opens video player / modal')">
+            <div class="video-thumb">▶<span class="video-duration">2:45</span></div>
+            <div class="video-title">Bảo trì</div>
           </div>
-          <div class="faq-answer">Tiếng động cơ nhẹ là bình thường. Nếu có tiếng cọ xát kim loại, tắt máy ngay và kiểm tra bánh xe / chổi quét.</div>
         </div>
       </div>
-      <div class="dev-note" style="bottom:-10px;right:0;">
-        Accordion: only 1 open at a time OR multiple — your call. Only 1 direct quote/answer shown per click, max-height transition for smooth expand. Data grouped by module_id in FAQ table, this view shows all modules flattened (or add module filter pills above if list gets long).
-      </div>
-    </div>
 
+      <div class="anchor">
+        <p class="subsection-label">⬇ Manual tải về</p>
+        <div class="manual-list">
+          <div class="manual-item" onclick="alert('Triggers file download')">
+            <div>
+              <div class="label">📄 Hướng dẫn sử dụng (VI)</div>
+              <div class="meta">PDF · 2.3 MB · 25 trang</div>
+            </div>
+            <span class="download-icon">⬇</span>
+          </div>
+          <div class="manual-item" onclick="alert('Triggers file download')">
+            <div>
+              <div class="label">📄 Thông số kỹ thuật</div>
+              <div class="meta">PDF · 890 KB · 4 trang</div>
+            </div>
+            <span class="download-icon">⬇</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== LAYER 1: Product-specific FAQ ===== -->
+      <div class="anchor">
+        <p class="subsection-label" id="product-faq-label">❓ Câu hỏi về S600</p>
+        <div class="faq-list">
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">
+              <span>Tại sao máy không hút nước?</span>
+              <span class="faq-chevron">▾</span>
+            </div>
+            <div class="faq-answer">Kiểm tra bể nước, bơm và ống dẫn. Vệ sinh theo hướng dẫn bảo trì.</div>
+          </div>
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">
+              <span>Cách vệ sinh chổi quét?</span>
+              <span class="faq-chevron">▾</span>
+            </div>
+            <div class="faq-answer">Tháo chổi, loại bỏ tóc và bụi bám, lắp lại đúng chiều mũi tên.</div>
+          </div>
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">
+              <span>Tiếng ồn bất thường khi vận hành?</span>
+              <span class="faq-chevron">▾</span>
+            </div>
+            <div class="faq-answer">Tiếng động cơ nhẹ là bình thường. Nếu có tiếng cọ xát kim loại, tắt máy và kiểm tra bánh xe/chổi.</div>
+          </div>
+        </div>
+        <div class="dev-note" style="top:-6px;right:0;">
+          Product-specific FAQ: filtered by product_id (+ optionally module_id if list grows long). Content swaps entirely when a different product is selected — these are technical/operational questions unique to that machine.
+        </div>
+      </div>
+
+      <!-- ===== Divider ===== -->
+      <div class="faq-divider">
+        <div class="faq-divider-line"></div>
+        <span class="faq-divider-text">CHÍNH SÁCH CHUNG</span>
+        <div class="faq-divider-line"></div>
+      </div>
+
+      <!-- ===== LAYER 2: General warranty FAQ (fixed, same for all products) ===== -->
+      <div class="anchor">
+        <div class="general-faq-section">
+          <p class="subsection-label">
+            <span>🛡️ Bảo hành & đổi trả</span>
+            <span class="general-faq-badge">Áp dụng mọi sản phẩm</span>
+          </p>
+          <div class="faq-list">
+            <div class="faq-item" onclick="toggleFaq(this)">
+              <div class="faq-question">
+                <span>Sản phẩm được bảo hành trong bao lâu?</span>
+                <span class="faq-chevron">▾</span>
+              </div>
+              <div class="faq-answer">24 tháng kể từ ngày mua, áp dụng cho lỗi từ nhà sản xuất.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+              <div class="faq-question">
+                <span>Tôi có thể đổi máy mới nếu vừa mua bị lỗi không?</span>
+                <span class="faq-chevron">▾</span>
+              </div>
+              <div class="faq-answer">Có, trong vòng 15 ngày đầu nếu phát hiện lỗi, được đổi máy mới miễn phí.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+              <div class="faq-question">
+                <span>Máy bị lỗi thì được sửa hay đổi máy?</span>
+                <span class="faq-chevron">▾</span>
+              </div>
+              <div class="faq-answer">Ưu tiên đổi máy mới (0-3 tháng đầu), đổi máy tân trang (3-6 tháng), sau 6 tháng sẽ sửa chữa.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+              <div class="faq-question">
+                <span>Phí vận chuyển khi gửi bảo hành ai chịu?</span>
+                <span class="faq-chevron">▾</span>
+              </div>
+              <div class="faq-answer">Trong thời hạn bảo hành, UWANT hỗ trợ vận chuyển 2 chiều miễn phí.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+              <div class="faq-question">
+                <span>Cần giấy tờ gì để yêu cầu bảo hành?</span>
+                <span class="faq-chevron">▾</span>
+              </div>
+              <div class="faq-answer">Hóa đơn mua hàng hoặc mã đơn hàng, kèm mô tả lỗi (ảnh/video nếu có).</div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+              <div class="faq-question">
+                <span>Bảo hành có bao gồm hư hỏng do người dùng không?</span>
+                <span class="faq-chevron">▾</span>
+              </div>
+              <div class="faq-answer">Không, lỗi do rơi vỡ, ngấm nước sai cách hoặc tự ý tháo máy sẽ không được bảo hành miễn phí.</div>
+            </div>
+          </div>
+        </div>
+        <div class="dev-note" style="bottom:-10px;right:0;">
+          General FAQ: NOT filtered by product — same 6 items regardless of which product card is selected above. Could be a separate "general_faqs" table, or same faqs table with product_id = null. Visually distinguished with sand background + badge so users understand this section applies universally.
+        </div>
+      </div>
+
+    </div>
   </div>
 
 </div>
 
 <script>
-function goToProduct(name) {
-  document.getElementById('screen-home').classList.remove('active');
-  document.getElementById('screen-product').classList.add('active');
-  document.getElementById('product-name').textContent = name;
-  window.scrollTo(0, 0);
-}
+var currentSelection = null;
 
-function goToHome() {
-  document.getElementById('screen-product').classList.remove('active');
-  document.getElementById('screen-home').classList.add('active');
-  window.scrollTo(0, 0);
+function selectProduct(name) {
+  document.querySelectorAll('.product-card').forEach(function(c) { c.classList.remove('selected'); });
+  document.getElementById('card-' + name).classList.add('selected');
+
+  document.getElementById('product-name').textContent = name;
+  document.getElementById('product-faq-label').textContent = '❓ Câu hỏi về ' + name;
+
+  var panel = document.getElementById('content-panel');
+  panel.classList.add('open');
+
+  currentSelection = name;
+
+  setTimeout(function() {
+    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
 }
 
 function toggleFaq(el) {
