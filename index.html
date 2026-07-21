@@ -41,14 +41,9 @@
     cursor: pointer;
   }
 
-  .dev-notes-toggle span.hint {
-    color: var(--platinum);
-    font-weight: 400;
-  }
+  .dev-notes-toggle span.hint { color: var(--platinum); font-weight: 400; }
 
-  body.show-notes .dev-note {
-    display: block;
-  }
+  body.show-notes .dev-note { display: block; }
 
   .dev-note {
     display: none;
@@ -111,11 +106,7 @@
     overflow: hidden;
   }
 
-  .hero-decoration {
-    position: absolute;
-    border-radius: 50%;
-    background: var(--gold);
-  }
+  .hero-decoration { position: absolute; border-radius: 50%; background: var(--gold); }
 
   .hero .eyebrow {
     color: var(--gold);
@@ -125,23 +116,10 @@
     margin-bottom: 8px;
   }
 
-  .hero h1 {
-    color: var(--white);
-    font-size: 22px;
-    font-weight: 500;
-  }
+  .hero h1 { color: var(--white); font-size: 22px; font-weight: 500; }
+  .hero p { color: var(--platinum); font-size: 12px; margin-top: 8px; }
 
-  .hero p {
-    color: var(--platinum);
-    font-size: 12px;
-    margin-top: 8px;
-  }
-
-  .section-label {
-    font-size: 15px;
-    font-weight: 600;
-    margin-bottom: 14px;
-  }
+  .section-label { font-size: 15px; font-weight: 600; margin-bottom: 14px; }
 
   .product-grid {
     display: grid;
@@ -179,48 +157,28 @@
     justify-content: center;
   }
 
-  .product-card.selected .product-card-image {
-    background: var(--white);
-  }
+  .product-card.selected .product-card-image { background: var(--white); }
 
   .product-card-image .placeholder-box {
-    width: 40px;
-    height: 40px;
+    width: 40px; height: 40px;
     border-radius: 8px;
     background: var(--platinum);
     opacity: 0.6;
   }
 
-  .product-card-info {
-    padding: 10px;
-  }
-
-  .product-card-info .name {
-    font-weight: 600;
-    font-size: 13px;
-  }
-
-  .product-card-info .desc {
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-top: 2px;
-  }
+  .product-card-info { padding: 10px; }
+  .product-card-info .name { font-weight: 600; font-size: 13px; }
+  .product-card-info .desc { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
 
   .content-panel {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.35s ease;
+    transition: max-height 0.4s ease;
   }
 
-  .content-panel.open {
-    max-height: 5000px;
-    margin-top: 24px;
-  }
+  .content-panel.open { max-height: 5000px; margin-top: 24px; }
 
-  .panel-inner {
-    border-top: 1px solid var(--platinum);
-    padding-top: 20px;
-  }
+  .panel-inner { border-top: 1px solid var(--platinum); padding-top: 20px; }
 
   .product-header {
     display: flex;
@@ -233,24 +191,15 @@
   }
 
   .product-header-thumb {
-    width: 48px;
-    height: 48px;
+    width: 48px; height: 48px;
     border-radius: var(--radius-sm);
     background: var(--white);
     border: 1px solid var(--platinum);
     flex-shrink: 0;
   }
 
-  .product-header h2 {
-    font-size: 16px;
-    font-weight: 600;
-  }
-
-  .product-header .sub {
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-top: 2px;
-  }
+  .product-header h2 { font-size: 16px; font-weight: 600; }
+  .product-header .sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
 
   .subsection-label {
     font-size: 11px;
@@ -294,8 +243,7 @@
 
   .video-duration {
     position: absolute;
-    bottom: 4px;
-    right: 4px;
+    bottom: 4px; right: 4px;
     background: rgba(0,0,0,0.6);
     color: white;
     font-size: 9px;
@@ -325,25 +273,11 @@
   }
 
   .manual-item:hover { border-color: var(--gold); background: #fffdf7; }
-
   .manual-item .label { font-size: 13px; }
+  .manual-item .meta { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
 
-  .manual-item .meta {
-    font-size: 10px;
-    color: var(--text-muted);
-    margin-top: 2px;
-  }
-
-  .download-icon {
-    color: var(--charcoal);
-    font-size: 16px;
-    transition: transform 0.2s;
-  }
-
-  .manual-item:hover .download-icon {
-    transform: translateY(2px);
-    color: var(--gold);
-  }
+  .download-icon { color: var(--charcoal); font-size: 16px; transition: transform 0.2s; }
+  .manual-item:hover .download-icon { transform: translateY(2px); color: var(--gold); }
 
   .faq-item {
     background: var(--white);
@@ -361,12 +295,7 @@
     font-weight: 500;
   }
 
-  .faq-chevron {
-    transition: transform 0.25s ease;
-    color: var(--gold);
-    font-size: 12px;
-  }
-
+  .faq-chevron { transition: transform 0.25s ease; color: var(--gold); font-size: 12px; flex-shrink: 0; margin-left: 10px; }
   .faq-item.open .faq-chevron { transform: rotate(180deg); }
 
   .faq-answer {
@@ -384,7 +313,15 @@
     border-top: 1px solid var(--sand);
   }
 
-  /* ===== Divider between product-specific and general FAQ ===== */
+  .faq-count-badge {
+    font-size: 10px;
+    color: var(--text-muted);
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    margin-left: 6px;
+  }
+
   .faq-divider {
     display: flex;
     align-items: center;
@@ -392,19 +329,9 @@
     margin: 26px 0 16px;
   }
 
-  .faq-divider-line {
-    flex: 1;
-    height: 1px;
-    background: var(--platinum);
-  }
+  .faq-divider-line { flex: 1; height: 1px; background: var(--platinum); }
+  .faq-divider-text { font-size: 10px; color: var(--text-muted); white-space: nowrap; }
 
-  .faq-divider-text {
-    font-size: 10px;
-    color: var(--text-muted);
-    white-space: nowrap;
-  }
-
-  /* ===== General FAQ section (fixed, applies to all products) ===== */
   .general-faq-section {
     background: var(--sand);
     border-radius: var(--radius-lg);
@@ -428,10 +355,7 @@
     font-weight: 600;
   }
 
-  .general-faq-section .faq-item {
-    background: var(--white);
-  }
-
+  .general-faq-section .faq-item { background: var(--white); }
   .general-faq-section .faq-list { margin-bottom: 0; }
 </style>
 </head>
@@ -444,7 +368,7 @@
 
 <div class="app-container">
 
-  <div class="state-tag">SCREEN: Home — single page, inline expand, 2-layer FAQ</div>
+  <div class="state-tag">SCREEN: Home — 5 product FAQ + 7 general FAQ</div>
 
   <div class="anchor">
     <div class="hero">
@@ -486,153 +410,51 @@
       </div>
     </div>
     <div class="dev-note" style="top:0;right:-10px;">
-      Click card → no navigation. Expands panel below with that product's content. Switching product swaps video/manual/product-FAQ content — but the General FAQ block at the bottom stays the same regardless of product selected (same 6-7 items, same data source, not filtered by product_id).
+      Click card → expands panel below, no navigation. Product-specific sections (video/manual/5 FAQ) re-render per product_id. General FAQ block (7 items) stays fixed — same content regardless of product selected.
     </div>
   </div>
 
   <div class="content-panel" id="content-panel">
     <div class="panel-inner">
 
-      <div class="anchor">
-        <div class="product-header">
-          <div class="product-header-thumb"></div>
-          <div>
-            <h2 id="product-name">S600</h2>
-            <p class="sub">Tất cả tài liệu hỗ trợ</p>
-          </div>
+      <div class="product-header">
+        <div class="product-header-thumb"></div>
+        <div>
+          <h2 id="product-name">S600</h2>
+          <p class="sub">Tất cả tài liệu hỗ trợ</p>
         </div>
       </div>
 
-      <div class="anchor">
-        <p class="subsection-label">▶ Video hướng dẫn</p>
-        <div class="video-grid">
-          <div class="video-card" onclick="alert('Opens video player / modal')">
-            <div class="video-thumb">▶<span class="video-duration">3:24</span></div>
-            <div class="video-title">Lắp ráp</div>
-          </div>
-          <div class="video-card" onclick="alert('Opens video player / modal')">
-            <div class="video-thumb">▶<span class="video-duration">4:15</span></div>
-            <div class="video-title">Chế độ thông minh</div>
-          </div>
-          <div class="video-card" onclick="alert('Opens video player / modal')">
-            <div class="video-thumb">▶<span class="video-duration">2:45</span></div>
-            <div class="video-title">Bảo trì</div>
-          </div>
-        </div>
-      </div>
+      <p class="subsection-label">▶ Video hướng dẫn</p>
+      <div class="video-grid" id="video-grid"></div>
+
+      <p class="subsection-label">⬇ Manual tải về</p>
+      <div class="manual-list" id="manual-list"></div>
 
       <div class="anchor">
-        <p class="subsection-label">⬇ Manual tải về</p>
-        <div class="manual-list">
-          <div class="manual-item" onclick="alert('Triggers file download')">
-            <div>
-              <div class="label">📄 Hướng dẫn sử dụng (VI)</div>
-              <div class="meta">PDF · 2.3 MB · 25 trang</div>
-            </div>
-            <span class="download-icon">⬇</span>
-          </div>
-          <div class="manual-item" onclick="alert('Triggers file download')">
-            <div>
-              <div class="label">📄 Thông số kỹ thuật</div>
-              <div class="meta">PDF · 890 KB · 4 trang</div>
-            </div>
-            <span class="download-icon">⬇</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- ===== LAYER 1: Product-specific FAQ ===== -->
-      <div class="anchor">
-        <p class="subsection-label" id="product-faq-label">❓ Câu hỏi về S600</p>
-        <div class="faq-list">
-          <div class="faq-item" onclick="toggleFaq(this)">
-            <div class="faq-question">
-              <span>Tại sao máy không hút nước?</span>
-              <span class="faq-chevron">▾</span>
-            </div>
-            <div class="faq-answer">Kiểm tra bể nước, bơm và ống dẫn. Vệ sinh theo hướng dẫn bảo trì.</div>
-          </div>
-          <div class="faq-item" onclick="toggleFaq(this)">
-            <div class="faq-question">
-              <span>Cách vệ sinh chổi quét?</span>
-              <span class="faq-chevron">▾</span>
-            </div>
-            <div class="faq-answer">Tháo chổi, loại bỏ tóc và bụi bám, lắp lại đúng chiều mũi tên.</div>
-          </div>
-          <div class="faq-item" onclick="toggleFaq(this)">
-            <div class="faq-question">
-              <span>Tiếng ồn bất thường khi vận hành?</span>
-              <span class="faq-chevron">▾</span>
-            </div>
-            <div class="faq-answer">Tiếng động cơ nhẹ là bình thường. Nếu có tiếng cọ xát kim loại, tắt máy và kiểm tra bánh xe/chổi.</div>
-          </div>
-        </div>
+        <p class="subsection-label" id="product-faq-label">❓ Câu hỏi về S600 <span class="faq-count-badge">(5 câu)</span></p>
+        <div class="faq-list" id="product-faq-list"></div>
         <div class="dev-note" style="top:-6px;right:0;">
-          Product-specific FAQ: filtered by product_id (+ optionally module_id if list grows long). Content swaps entirely when a different product is selected — these are technical/operational questions unique to that machine.
+          Exactly 5 items per product — capped intentionally. Filtered by product_id. Prioritize the 5 highest-volume support topics per product, validated against real CS ticket data rather than guessed.
         </div>
       </div>
 
-      <!-- ===== Divider ===== -->
       <div class="faq-divider">
         <div class="faq-divider-line"></div>
         <span class="faq-divider-text">CHÍNH SÁCH CHUNG</span>
         <div class="faq-divider-line"></div>
       </div>
 
-      <!-- ===== LAYER 2: General warranty FAQ (fixed, same for all products) ===== -->
       <div class="anchor">
         <div class="general-faq-section">
           <p class="subsection-label">
-            <span>🛡️ Bảo hành & đổi trả</span>
+            <span>🛡️ Bảo hành & đổi trả <span class="faq-count-badge">(7 câu)</span></span>
             <span class="general-faq-badge">Áp dụng mọi sản phẩm</span>
           </p>
-          <div class="faq-list">
-            <div class="faq-item" onclick="toggleFaq(this)">
-              <div class="faq-question">
-                <span>Sản phẩm được bảo hành trong bao lâu?</span>
-                <span class="faq-chevron">▾</span>
-              </div>
-              <div class="faq-answer">24 tháng kể từ ngày mua, áp dụng cho lỗi từ nhà sản xuất.</div>
-            </div>
-            <div class="faq-item" onclick="toggleFaq(this)">
-              <div class="faq-question">
-                <span>Tôi có thể đổi máy mới nếu vừa mua bị lỗi không?</span>
-                <span class="faq-chevron">▾</span>
-              </div>
-              <div class="faq-answer">Có, trong vòng 15 ngày đầu nếu phát hiện lỗi, được đổi máy mới miễn phí.</div>
-            </div>
-            <div class="faq-item" onclick="toggleFaq(this)">
-              <div class="faq-question">
-                <span>Máy bị lỗi thì được sửa hay đổi máy?</span>
-                <span class="faq-chevron">▾</span>
-              </div>
-              <div class="faq-answer">Ưu tiên đổi máy mới (0-3 tháng đầu), đổi máy tân trang (3-6 tháng), sau 6 tháng sẽ sửa chữa.</div>
-            </div>
-            <div class="faq-item" onclick="toggleFaq(this)">
-              <div class="faq-question">
-                <span>Phí vận chuyển khi gửi bảo hành ai chịu?</span>
-                <span class="faq-chevron">▾</span>
-              </div>
-              <div class="faq-answer">Trong thời hạn bảo hành, UWANT hỗ trợ vận chuyển 2 chiều miễn phí.</div>
-            </div>
-            <div class="faq-item" onclick="toggleFaq(this)">
-              <div class="faq-question">
-                <span>Cần giấy tờ gì để yêu cầu bảo hành?</span>
-                <span class="faq-chevron">▾</span>
-              </div>
-              <div class="faq-answer">Hóa đơn mua hàng hoặc mã đơn hàng, kèm mô tả lỗi (ảnh/video nếu có).</div>
-            </div>
-            <div class="faq-item" onclick="toggleFaq(this)">
-              <div class="faq-question">
-                <span>Bảo hành có bao gồm hư hỏng do người dùng không?</span>
-                <span class="faq-chevron">▾</span>
-              </div>
-              <div class="faq-answer">Không, lỗi do rơi vỡ, ngấm nước sai cách hoặc tự ý tháo máy sẽ không được bảo hành miễn phí.</div>
-            </div>
-          </div>
+          <div class="faq-list" id="general-faq-list"></div>
         </div>
         <div class="dev-note" style="bottom:-10px;right:0;">
-          General FAQ: NOT filtered by product — same 6 items regardless of which product card is selected above. Could be a separate "general_faqs" table, or same faqs table with product_id = null. Visually distinguished with sand background + badge so users understand this section applies universally.
+          Fixed 7 items, product_id = null (or separate general_faqs table). Never changes when switching products. Update once here → reflects everywhere.
         </div>
       </div>
 
@@ -642,19 +464,112 @@
 </div>
 
 <script>
-var currentSelection = null;
+var productData = {
+  S600: {
+    videos: [
+      { title: 'Lắp ráp', duration: '3:24' },
+      { title: 'Chế độ thông minh', duration: '4:15' },
+      { title: 'Bảo trì', duration: '2:45' }
+    ],
+    manuals: [
+      { label: '📄 Hướng dẫn sử dụng (VI)', meta: 'PDF · 2.3 MB · 25 trang' },
+      { label: '📄 Thông số kỹ thuật', meta: 'PDF · 890 KB · 4 trang' }
+    ],
+    faqs: [
+      { q: 'Tại sao máy không hút nước?', a: 'Kiểm tra bể nước, bơm và ống dẫn. Vệ sinh theo hướng dẫn bảo trì.' },
+      { q: 'Cách vệ sinh chổi quét?', a: 'Tháo chổi, loại bỏ tóc và bụi bám, lắp lại đúng chiều mũi tên.' },
+      { q: 'Tiếng ồn bất thường khi vận hành?', a: 'Tiếng động cơ nhẹ là bình thường. Nếu có tiếng cọ xát kim loại, tắt máy và kiểm tra bánh xe/chổi.' },
+      { q: 'Cách vệ sinh bể nước?', a: 'Tháo bể ra, rửa bằng nước ấm, lau khô trước khi lắp lại để tránh mùi hôi.' },
+      { q: 'Máy không kết nối được với app?', a: 'Kiểm tra Wi-Fi 2.4GHz, khởi động lại router và máy, sau đó kết nối lại qua app.' }
+    ]
+  },
+  DX800: {
+    videos: [
+      { title: 'Lắp ráp bể nước', duration: '3:50' },
+      { title: 'Chế độ hơi nước', duration: '4:30' },
+      { title: 'Khử cáu cặn', duration: '3:10' }
+    ],
+    manuals: [
+      { label: '📄 Hướng dẫn sử dụng (VI)', meta: 'PDF · 2.8 MB · 30 trang' },
+      { label: '📄 Thông số kỹ thuật', meta: 'PDF · 950 KB · 5 trang' }
+    ],
+    faqs: [
+      { q: 'Tại sao máy không ra hơi nước?', a: 'Kiểm tra mực nước trong bể, đảm bảo đã cắm điện đủ 30 giây để làm nóng trước khi dùng.' },
+      { q: 'Nước không nóng lên?', a: 'Kiểm tra rơ-le nhiệt và đảm bảo bể nước không bị cạn giữa chừng.' },
+      { q: 'Cách vệ sinh chống cáu cặn?', a: 'Dùng dung dịch khử cặn chuyên dụng mỗi 2-4 tuần tùy độ cứng của nguồn nước.' },
+      { q: 'Dùng nước nóng có an toàn không?', a: 'Có, máy có van an toàn tự ngắt khi áp suất vượt ngưỡng. Không tự ý tháo van khi máy đang nóng.' },
+      { q: 'Vòi phun bị tắc phải làm sao?', a: 'Ngâm đầu vòi phun trong nước ấm 10-15 phút, dùng kim nhỏ thông lỗ phun nếu cần.' }
+    ]
+  },
+  Y100: {
+    videos: [
+      { title: 'Lắp khăn lau', duration: '2:30' },
+      { title: 'Chế độ hơi nước', duration: '3:45' },
+      { title: 'Vệ sinh sau dùng', duration: '2:15' }
+    ],
+    manuals: [
+      { label: '📄 Hướng dẫn sử dụng (VI)', meta: 'PDF · 2.1 MB · 22 trang' },
+      { label: '📄 Thông số kỹ thuật', meta: 'PDF · 780 KB · 4 trang' }
+    ],
+    faqs: [
+      { q: 'Hơi nước ra yếu hơn bình thường?', a: 'Kiểm tra mực nước trong bể và vệ sinh đầu phun hơi nếu bị đóng cặn.' },
+      { q: 'Cách thay hoặc vệ sinh khăn lau?', a: 'Giặt khăn bằng tay sau mỗi lần dùng, thay khăn mới sau khoảng 3-6 tháng sử dụng thường xuyên.' },
+      { q: 'Máy dùng được cho loại sàn nào?', a: 'Phù hợp sàn gạch men, sàn đá, sàn nhựa. Không khuyến khích dùng trên sàn gỗ tự nhiên chưa xử lý chống ẩm.' },
+      { q: 'Có mùi khét nhẹ khi mới dùng lần đầu?', a: 'Đây là hiện tượng bình thường do lớp bảo vệ linh kiện, mùi sẽ hết sau 2-3 lần sử dụng đầu.' },
+      { q: 'Máy tự tắt giữa chừng khi đang lau?', a: 'Có thể do cạn nước hoặc quá nhiệt. Để máy nguội 10 phút và kiểm tra lại mực nước trước khi dùng tiếp.' }
+    ]
+  }
+};
+
+var generalFaqs = [
+  { q: 'Sản phẩm được bảo hành trong bao lâu?', a: '24 tháng kể từ ngày mua, áp dụng cho lỗi từ nhà sản xuất.' },
+  { q: 'Tôi có thể đổi máy mới nếu vừa mua bị lỗi không?', a: 'Có, trong vòng 15 ngày đầu nếu phát hiện lỗi, được đổi máy mới miễn phí.' },
+  { q: 'Máy bị lỗi thì được sửa hay đổi máy?', a: 'Ưu tiên đổi máy mới (0-3 tháng đầu), đổi máy tân trang (3-6 tháng), sau 6 tháng sẽ sửa chữa.' },
+  { q: 'Phí vận chuyển khi gửi bảo hành ai chịu?', a: 'Trong thời hạn bảo hành, UWANT hỗ trợ vận chuyển 2 chiều miễn phí.' },
+  { q: 'Mua từ đại lý có được bảo hành không?', a: 'Có, miễn là mua từ đại lý ủy quyền chính hãng UWANT Việt Nam, giữ hóa đơn hoặc mã đơn hàng.' },
+  { q: 'Cần giấy tờ gì để yêu cầu bảo hành?', a: 'Hóa đơn mua hàng hoặc mã đơn hàng, kèm mô tả lỗi (ảnh/video nếu có).' },
+  { q: 'Bảo hành có bao gồm hư hỏng do người dùng không?', a: 'Không, lỗi do rơi vỡ, ngấm nước sai cách hoặc tự ý tháo máy sẽ không được bảo hành miễn phí.' }
+];
+
+function renderVideos(list) {
+  return list.map(function(v) {
+    return '<div class="video-card" onclick="alert(\'Opens video player / modal\')">' +
+      '<div class="video-thumb">▶<span class="video-duration">' + v.duration + '</span></div>' +
+      '<div class="video-title">' + v.title + '</div></div>';
+  }).join('');
+}
+
+function renderManuals(list) {
+  return list.map(function(m) {
+    return '<div class="manual-item" onclick="alert(\'Triggers file download\')">' +
+      '<div><div class="label">' + m.label + '</div><div class="meta">' + m.meta + '</div></div>' +
+      '<span class="download-icon">⬇</span></div>';
+  }).join('');
+}
+
+function renderFaqs(list) {
+  return list.map(function(f) {
+    return '<div class="faq-item" onclick="toggleFaq(this)">' +
+      '<div class="faq-question"><span>' + f.q + '</span><span class="faq-chevron">▾</span></div>' +
+      '<div class="faq-answer">' + f.a + '</div></div>';
+  }).join('');
+}
+
+document.getElementById('general-faq-list').innerHTML = renderFaqs(generalFaqs);
 
 function selectProduct(name) {
   document.querySelectorAll('.product-card').forEach(function(c) { c.classList.remove('selected'); });
   document.getElementById('card-' + name).classList.add('selected');
 
+  var data = productData[name];
   document.getElementById('product-name').textContent = name;
-  document.getElementById('product-faq-label').textContent = '❓ Câu hỏi về ' + name;
+  document.getElementById('product-faq-label').innerHTML = '❓ Câu hỏi về ' + name + ' <span class="faq-count-badge">(5 câu)</span>';
+  document.getElementById('video-grid').innerHTML = renderVideos(data.videos);
+  document.getElementById('manual-list').innerHTML = renderManuals(data.manuals);
+  document.getElementById('product-faq-list').innerHTML = renderFaqs(data.faqs);
 
   var panel = document.getElementById('content-panel');
   panel.classList.add('open');
-
-  currentSelection = name;
 
   setTimeout(function() {
     panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
