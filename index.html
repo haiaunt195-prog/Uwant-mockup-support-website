@@ -16,6 +16,7 @@
     --radius-md: 10px;
     --radius-lg: 14px;
     --radius-xl: 16px;
+    --light-bg: #FFFDF7;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -78,6 +79,8 @@
     background: var(--white);
     position: relative;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
   }
 
   .state-tag {
@@ -174,9 +177,10 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease;
+    margin-bottom: 24px;
   }
 
-  .content-panel.open { max-height: 5000px; margin-top: 24px; }
+  .content-panel.open { max-height: 5000px; }
 
   .panel-inner { border-top: 1px solid var(--platinum); padding-top: 20px; }
 
@@ -272,45 +276,104 @@
     transition: all 0.15s;
   }
 
-  .manual-item:hover { border-color: var(--gold); background: #fffdf7; }
+  .manual-item:hover { border-color: var(--gold); background: var(--light-bg); }
   .manual-item .label { font-size: 13px; }
   .manual-item .meta { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
 
   .download-icon { color: var(--charcoal); font-size: 16px; transition: transform 0.2s; }
   .manual-item:hover .download-icon { transform: translateY(2px); color: var(--gold); }
 
+  /* ===== NEW: FAQ ITEM REDESIGN ===== */
   .faq-item {
     background: var(--white);
     border: 1px solid var(--platinum);
     border-radius: var(--radius-md);
-    padding: 12px 14px;
+    overflow: hidden;
+    transition: all 0.15s ease;
+  }
+
+  .faq-item:hover {
+    border-color: var(--gold);
+    box-shadow: 0 2px 8px rgba(201, 166, 70, 0.08);
+  }
+
+  .faq-question-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 14px;
     cursor: pointer;
+    background: var(--white);
+  }
+
+  .faq-icon-badge {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--sand);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    color: var(--gold);
   }
 
   .faq-question {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex: 1;
     font-size: 13px;
     font-weight: 500;
+    color: var(--charcoal);
+    text-align: left;
+    line-height: 1.4;
   }
 
-  .faq-chevron { transition: transform 0.25s ease; color: var(--gold); font-size: 12px; flex-shrink: 0; margin-left: 10px; }
-  .faq-item.open .faq-chevron { transform: rotate(180deg); }
+  .faq-chevron {
+    transition: transform 0.25s ease;
+    color: var(--gold);
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .faq-item.open .faq-chevron {
+    transform: rotate(180deg);
+  }
 
   .faq-answer {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.25s ease, margin-top 0.25s ease;
-    font-size: 12px;
+    transition: max-height 0.25s ease, padding 0.25s ease;
+    font-size: 13px;
     color: var(--text-muted);
+    line-height: 1.6;
+    background: var(--light-bg);
   }
 
   .faq-item.open .faq-answer {
-    max-height: 200px;
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid var(--sand);
+    max-height: 400px;
+    padding: 14px;
+    border-top: 1px solid var(--platinum);
+  }
+
+  .faq-answer p {
+    margin-bottom: 8px;
+  }
+
+  .faq-answer p:last-child {
+    margin-bottom: 0;
+  }
+
+  .faq-answer ul {
+    margin: 8px 0 8px 20px;
+    padding: 0;
+    list-style: disc;
+  }
+
+  .faq-answer li {
+    margin-bottom: 6px;
+    padding: 0;
   }
 
   .faq-count-badge {
@@ -326,7 +389,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    margin: 26px 0 16px;
+    margin: 32px 0 20px;
   }
 
   .faq-divider-line { flex: 1; height: 1px; background: var(--platinum); }
@@ -336,6 +399,8 @@
     background: var(--sand);
     border-radius: var(--radius-lg);
     padding: 16px;
+    margin-top: auto;
+    flex-shrink: 0;
   }
 
   .general-faq-section .subsection-label {
@@ -348,7 +413,7 @@
     background: var(--charcoal);
     color: var(--white);
     font-size: 9px;
-    padding: 2px 8px;
+    padding: 3px 10px;
     border-radius: 10px;
     text-transform: none;
     letter-spacing: 0;
@@ -356,7 +421,20 @@
   }
 
   .general-faq-section .faq-item { background: var(--white); }
-  .general-faq-section .faq-list { margin-bottom: 0; }
+  .general-faq-section .faq-list { margin-bottom: 0; gap: 6px; }
+
+  .main-content {
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  .sticky-general-faq {
+    position: sticky;
+    bottom: 0;
+    background: var(--white);
+    padding-top: 20px;
+    z-index: 10;
+  }
 </style>
 </head>
 <body>
@@ -368,96 +446,100 @@
 
 <div class="app-container">
 
-  <div class="state-tag">SCREEN: Home — 5 product FAQ + 7 general FAQ</div>
+  <div class="state-tag">SCREEN: Home — 5 product FAQ + 7 general FAQ (always visible)</div>
 
-  <div class="anchor">
-    <div class="hero">
-      <div class="hero-decoration" style="width:64px;height:64px;top:20px;right:30px;opacity:0.15;"></div>
-      <div class="hero-decoration" style="width:36px;height:36px;bottom:16px;left:36px;opacity:0.1;"></div>
-      <p class="eyebrow">UWANT Vietnam</p>
-      <h1>Trung tâm hỗ trợ</h1>
-      <p>Video · Tài liệu · Câu hỏi thường gặp</p>
+  <div class="main-content">
+    <div class="anchor">
+      <div class="hero">
+        <div class="hero-decoration" style="width:64px;height:64px;top:20px;right:30px;opacity:0.15;"></div>
+        <div class="hero-decoration" style="width:36px;height:36px;bottom:16px;left:36px;opacity:0.1;"></div>
+        <p class="eyebrow">UWANT Vietnam</p>
+        <h1>Trung tâm hỗ trợ</h1>
+        <p>Video · Tài liệu · Câu hỏi thường gặp</p>
+      </div>
+      <div class="dev-note" style="top:10px;left:10px;">
+        Hero: full-width banner. Static, no interaction.
+      </div>
     </div>
-    <div class="dev-note" style="top:10px;left:10px;">
-      Hero: full-width banner image or gradient fallback. Static, no interaction.
+
+    <p class="section-label">Chọn sản phẩm của bạn</p>
+
+    <div class="anchor">
+      <div class="product-grid">
+        <div class="product-card" id="card-S600" onclick="selectProduct('S600')">
+          <div class="product-card-image"><div class="placeholder-box"></div></div>
+          <div class="product-card-info">
+            <div class="name">S600</div>
+            <div class="desc">Máy Hút Bụi Lau Sàn Khô Ướt</div>
+          </div>
+        </div>
+        <div class="product-card" id="card-DX800" onclick="selectProduct('DX800')">
+          <div class="product-card-image"><div class="placeholder-box"></div></div>
+          <div class="product-card-info">
+            <div class="name">DX800</div>
+            <div class="desc">Máy Hút Bụi Lau Sàn Hơi Nước Nóng</div>
+          </div>
+        </div>
+        <div class="product-card" id="card-Y100" onclick="selectProduct('Y100')">
+          <div class="product-card-image"><div class="placeholder-box"></div></div>
+          <div class="product-card-info">
+            <div class="name">Y100</div>
+            <div class="desc">Máy Giặt Sofa Nệm Thảm Hơi Nước Nóng</div>
+          </div>
+        </div>
+      </div>
+      <div class="dev-note" style="top:0;right:-10px;">
+        Product-specific sections re-render when clicked. General FAQ always visible below.
+      </div>
+    </div>
+
+    <div class="content-panel" id="content-panel">
+      <div class="panel-inner">
+
+        <div class="product-header">
+          <div class="product-header-thumb"></div>
+          <div>
+            <h2 id="product-name">S600</h2>
+            <p class="sub">Tất cả tài liệu hỗ trợ</p>
+          </div>
+        </div>
+
+        <p class="subsection-label">▶ Video hướng dẫn</p>
+        <div class="video-grid" id="video-grid"></div>
+
+        <p class="subsection-label">⬇ Manual tải về</p>
+        <div class="manual-list" id="manual-list"></div>
+
+        <div class="anchor">
+          <p class="subsection-label" id="product-faq-label">❓ Câu hỏi về S600 <span class="faq-count-badge">(5 câu)</span></p>
+          <div class="faq-list" id="product-faq-list"></div>
+          <div class="dev-note" style="top:-6px;right:0;">
+            Exactly 5 items per product, filtered by product_id.
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <p class="section-label">Chọn sản phẩm của bạn</p>
-
-  <div class="anchor">
-    <div class="product-grid">
-      <div class="product-card" id="card-S600" onclick="selectProduct('S600')">
-        <div class="product-card-image"><div class="placeholder-box"></div></div>
-        <div class="product-card-info">
-          <div class="name">S600</div>
-          <div class="desc">Máy Hút Bụi Lau Sàn Khô Ướt</div>
-        </div>
-      </div>
-      <div class="product-card" id="card-DX800" onclick="selectProduct('DX800')">
-        <div class="product-card-image"><div class="placeholder-box"></div></div>
-        <div class="product-card-info">
-          <div class="name">DX800</div>
-          <div class="desc">Máy Hút Bụi Lau Sàn Hơi Nước Nóng</div>
-        </div>
-      </div>
-      <div class="product-card" id="card-Y100" onclick="selectProduct('Y100')">
-        <div class="product-card-image"><div class="placeholder-box"></div></div>
-        <div class="product-card-info">
-          <div class="name">Y100</div>
-          <div class="desc">Máy Giặt Sofa Nệm Thảm Hơi Nước Nóng</div>
-        </div>
-      </div>
+  <!-- ===== GENERAL FAQ: ALWAYS VISIBLE ===== -->
+  <div class="sticky-general-faq">
+    <div class="faq-divider">
+      <div class="faq-divider-line"></div>
+      <span class="faq-divider-text">CHÍNH SÁCH CHUNG</span>
+      <div class="faq-divider-line"></div>
     </div>
-    <div class="dev-note" style="top:0;right:-10px;">
-      Click card → expands panel below, no navigation. Product-specific sections (video/manual/5 FAQ) re-render per product_id. General FAQ block (7 items) stays fixed — same content regardless of product selected.
-    </div>
-  </div>
 
-  <div class="content-panel" id="content-panel">
-    <div class="panel-inner">
-
-      <div class="product-header">
-        <div class="product-header-thumb"></div>
-        <div>
-          <h2 id="product-name">S600</h2>
-          <p class="sub">Tất cả tài liệu hỗ trợ</p>
-        </div>
+    <div class="anchor">
+      <div class="general-faq-section">
+        <p class="subsection-label">
+          <span>🛡️ Bảo hành & đổi trả <span class="faq-count-badge">(7 câu)</span></span>
+          <span class="general-faq-badge">Áp dụng mọi sản phẩm</span>
+        </p>
+        <div class="faq-list" id="general-faq-list"></div>
       </div>
-
-      <p class="subsection-label">▶ Video hướng dẫn</p>
-      <div class="video-grid" id="video-grid"></div>
-
-      <p class="subsection-label">⬇ Manual tải về</p>
-      <div class="manual-list" id="manual-list"></div>
-
-      <div class="anchor">
-        <p class="subsection-label" id="product-faq-label">❓ Câu hỏi về S600 <span class="faq-count-badge">(5 câu)</span></p>
-        <div class="faq-list" id="product-faq-list"></div>
-        <div class="dev-note" style="top:-6px;right:0;">
-          Exactly 5 items per product — capped intentionally. Filtered by product_id. Prioritize the 5 highest-volume support topics per product, validated against real CS ticket data rather than guessed.
-        </div>
+      <div class="dev-note" style="bottom:-10px;right:0;">
+        Fixed 7 items, always visible. Never changes when switching products.
       </div>
-
-      <div class="faq-divider">
-        <div class="faq-divider-line"></div>
-        <span class="faq-divider-text">CHÍNH SÁCH CHUNG</span>
-        <div class="faq-divider-line"></div>
-      </div>
-
-      <div class="anchor">
-        <div class="general-faq-section">
-          <p class="subsection-label">
-            <span>🛡️ Bảo hành & đổi trả <span class="faq-count-badge">(7 câu)</span></span>
-            <span class="general-faq-badge">Áp dụng mọi sản phẩm</span>
-          </p>
-          <div class="faq-list" id="general-faq-list"></div>
-        </div>
-        <div class="dev-note" style="bottom:-10px;right:0;">
-          Fixed 7 items, product_id = null (or separate general_faqs table). Never changes when switching products. Update once here → reflects everywhere.
-        </div>
-      </div>
-
     </div>
   </div>
 
@@ -524,38 +606,38 @@ var productData = {
 var generalFaqs = [
   { 
     q: 'Có cần lưu ý gì khi sử dụng sản phẩm?', 
-    a: 'Mỗi sản phẩm đều đi kèm hướng dẫn sử dụng chi tiết. Hãy đọc kỹ các lưu ý an toàn trước khi dùng để duy trì sản phẩm trong điều kiện tốt nhất. Nếu có bất kỳ thắc mắc nào, vui lòng liên hệ bộ phận chăm sóc khách hàng của chúng tôi.',
-    icon: 'ti-alert-circle'
+    a: '<p>Mỗi sản phẩm đều đi kèm hướng dẫn sử dụng chi tiết. Hãy đọc kỹ các lưu ý an toàn trước khi dùng để duy trì sản phẩm trong điều kiện tốt nhất. Nếu có bất kỳ thắc mắc nào, vui lòng liên hệ bộ phận chăm sóc khách hàng của chúng tôi.</p>',
+    icon: '⚠️'
   },
   { 
     q: 'Sản phẩm bảo hành bao lâu?', 
-    a: 'Sản phẩm UWANT được bảo hành 24 tháng từ ngày mua. Nếu sản phẩm gặp lỗi do nhà sản xuất trong quá trình sử dụng bình thường, chúng tôi sẽ sửa chữa hoặc thay thế hoàn toàn miễn phí.',
-    icon: 'ti-shield-check'
+    a: '<p>Sản phẩm UWANT được bảo hành <strong>24 tháng</strong> từ ngày mua. Nếu sản phẩm gặp lỗi do nhà sản xuất trong quá trình sử dụng bình thường, chúng tôi sẽ sửa chữa hoặc thay thế hoàn toàn miễn phí.</p>',
+    icon: '🛡️'
   },
   { 
     q: 'Sản phẩm bị lỗi thì phải làm sao?', 
-    a: 'Bạn có thể liên hệ bộ phận chăm sóc khách hàng qua Zalo OA "UWANT VN Official". Vui lòng chuẩn bị: hóa đơn mua hàng, video/ảnh rõ ràng về tình trạng lỗi sản phẩm. Chúng tôi sẽ hỗ trợ bạn nhanh chóng.',
-    icon: 'ti-tool'
+    a: '<p>Bạn có thể liên hệ bộ phận chăm sóc khách hàng qua <strong>Zalo OA "UWANT VN Official"</strong>. Vui lòng chuẩn bị:</p><ul><li>Hóa đơn mua hàng</li><li>Video/ảnh rõ ràng về tình trạng lỗi sản phẩm</li></ul><p>Chúng tôi sẽ hỗ trợ bạn nhanh chóng.</p>',
+    icon: '🔧'
   },
   { 
     q: 'Phí vận chuyển khi gửi bảo hành ai chịu?', 
-    a: 'Trong thời hạn bảo hành, UWANT hỗ trợ vận chuyển 2 chiều (đi và về) hoàn toàn miễn phí.',
-    icon: 'ti-truck-delivery'
+    a: '<p>Trong thời hạn bảo hành, UWANT hỗ trợ vận chuyển <strong>2 chiều (đi và về) hoàn toàn miễn phí</strong>.</p>',
+    icon: '🚚'
   },
   { 
     q: 'Cách trả lại sản phẩm?', 
-    a: 'Nếu cần trả lại sản phẩm, chúng tôi sẽ gửi hướng dẫn chi tiết về địa chỉ và cách đóng gói:\n• Nếu còn hộp gốc, vui lòng sử dụng hộp đó\n• Nếu không có hộp gốc, hãy đóng gói sản phẩm cẩn thận để bảo vệ\n• Tuân theo hướng dẫn từ đội hỗ trợ trước khi gửi trả',
-    icon: 'ti-package'
+    a: '<p>Nếu cần trả lại sản phẩm, chúng tôi sẽ gửi hướng dẫn chi tiết về địa chỉ và cách đóng gói:</p><ul><li>Nếu còn hộp gốc, vui lòng sử dụng hộp đó</li><li>Nếu không có hộp gốc, hãy đóng gói sản phẩm cẩn thận để bảo vệ</li><li>Tuân theo hướng dẫn từ đội hỗ trợ trước khi gửi trả</li></ul>',
+    icon: '📦'
   },
   { 
     q: 'Thời gian xử lý bảo hành là bao lâu?', 
-    a: 'Sau khi nhận sản phẩm, chúng tôi thường kiểm tra và xử lý trong vòng 5-7 ngày làm việc. Khi hoàn thành, chúng tôi sẽ liên hệ bạn qua email để sắp xếp gửi trả sản phẩm.',
-    icon: 'ti-clock'
+    a: '<p>Sau khi nhận sản phẩm, chúng tôi thường kiểm tra và xử lý trong vòng <strong>5-7 ngày làm việc</strong>. Khi hoàn thành, chúng tôi sẽ liên hệ bạn qua email để sắp xếp gửi trả sản phẩm.</p>',
+    icon: '⏱️'
   },
   { 
     q: 'Những trường hợp nào KHÔNG được bảo hành?', 
-    a: 'Sản phẩm sẽ KHÔNG được bảo hành trong các trường hợp sau:\n• Quá hạn bảo hành – Sản phẩm đã sử dụng quá 24 tháng kể từ ngày mua\n• Lỗi do sử dụng sai – Va đập, rơi, ngập nước, không theo hướng dẫn sử dụng\n• Hư hỏng do môi trường – Nước ngập, nhiệt độ quá cao/thấp, độ ẩm cao\n• Dùng phụ kiện không chính hãng – Pin, sạc, linh kiện thay thế không phải của UWANT\n• Tự ý sửa chữa – Tự mở, sửa trước khi liên hệ bảo hành chính thức\n• Không có hóa đơn – Không thể chứng minh ngày mua hoặc nơi mua\n• Hao mòn bình thường – Giảm hiệu suất do sử dụng lâu dài (ví dụ: pin yếu sau 2 năm)',
-    icon: 'ti-x'
+    a: '<p>Sản phẩm sẽ KHÔNG được bảo hành trong các trường hợp sau:</p><ul><li><strong>Quá hạn bảo hành</strong> – Sản phẩm đã sử dụng quá 24 tháng kể từ ngày mua</li><li><strong>Lỗi do sử dụng sai</strong> – Va đập, rơi, ngập nước, không theo hướng dẫn sử dụng</li><li><strong>Hư hỏng do môi trường</strong> – Nước ngập, nhiệt độ quá cao/thấp, độ ẩm cao</li><li><strong>Dùng phụ kiện không chính hãng</strong> – Pin, sạc, linh kiện thay thế không phải của UWANT</li><li><strong>Tự ý sửa chữa</strong> – Tự mở, sửa trước khi liên hệ bảo hành chính thức</li><li><strong>Không có hóa đơn</strong> – Không thể chứng minh ngày mua hoặc nơi mua</li><li><strong>Hao mòn bình thường</strong> – Giảm hiệu suất do sử dụng lâu dài (ví dụ: pin yếu sau 2 năm)</li></ul>',
+    icon: '❌'
   }
 ];
 
@@ -578,7 +660,11 @@ function renderManuals(list) {
 function renderFaqs(list) {
   return list.map(function(f) {
     return '<div class="faq-item" onclick="toggleFaq(this)">' +
-      '<div class="faq-question"><span>' + f.q + '</span><span class="faq-chevron">▾</span></div>' +
+      '<div class="faq-question-wrapper">' +
+      '<div class="faq-icon-badge">' + f.icon + '</div>' +
+      '<div class="faq-question">' + f.q + '</div>' +
+      '<span class="faq-chevron">▾</span>' +
+      '</div>' +
       '<div class="faq-answer">' + f.a + '</div></div>';
   }).join('');
 }
@@ -600,7 +686,8 @@ function selectProduct(name) {
   panel.classList.add('open');
 
   setTimeout(function() {
-    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    var scrollTarget = document.getElementById('product-faq-label');
+    scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }, 100);
 }
 
