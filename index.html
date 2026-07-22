@@ -399,8 +399,6 @@
     background: var(--sand);
     border-radius: var(--radius-lg);
     padding: 16px;
-    margin-top: auto;
-    flex-shrink: 0;
   }
 
   .general-faq-section .subsection-label {
@@ -422,19 +420,6 @@
 
   .general-faq-section .faq-item { background: var(--white); }
   .general-faq-section .faq-list { margin-bottom: 0; gap: 6px; }
-
-  .main-content {
-    flex: 1;
-    overflow-y: auto;
-  }
-
-  .sticky-general-faq {
-    position: sticky;
-    bottom: 0;
-    background: var(--white);
-    padding-top: 20px;
-    z-index: 10;
-  }
 </style>
 </head>
 <body>
@@ -521,25 +506,23 @@
     </div>
   </div>
 
-  <!-- ===== GENERAL FAQ: ALWAYS VISIBLE ===== -->
-  <div class="sticky-general-faq">
-    <div class="faq-divider">
-      <div class="faq-divider-line"></div>
-      <span class="faq-divider-text">CHÍNH SÁCH CHUNG</span>
-      <div class="faq-divider-line"></div>
-    </div>
+  <!-- ===== GENERAL FAQ: SCROLL NATURALLY ===== -->
+  <div class="faq-divider">
+    <div class="faq-divider-line"></div>
+    <span class="faq-divider-text">CHÍNH SÁCH CHUNG</span>
+    <div class="faq-divider-line"></div>
+  </div>
 
-    <div class="anchor">
-      <div class="general-faq-section">
-        <p class="subsection-label">
-          <span>🛡️ Bảo hành & đổi trả <span class="faq-count-badge">(7 câu)</span></span>
-          <span class="general-faq-badge">Áp dụng mọi sản phẩm</span>
-        </p>
-        <div class="faq-list" id="general-faq-list"></div>
-      </div>
-      <div class="dev-note" style="bottom:-10px;right:0;">
-        Fixed 7 items, always visible. Never changes when switching products.
-      </div>
+  <div class="anchor">
+    <div class="general-faq-section">
+      <p class="subsection-label">
+        <span>🛡️ Bảo hành & đổi trả <span class="faq-count-badge">(7 câu)</span></span>
+        <span class="general-faq-badge">Áp dụng mọi sản phẩm</span>
+      </p>
+      <div class="faq-list" id="general-faq-list"></div>
+    </div>
+    <div class="dev-note" style="bottom:-10px;right:0;">
+      7 items scroll naturally with page. Never changes when switching products.
     </div>
   </div>
 
